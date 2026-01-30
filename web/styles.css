@@ -1,0 +1,43 @@
+.border-blue {
+    border: solid 2px blue;
+}
+
+.border-green {
+    border: solid 2px green;
+}
+
+.border-orange {
+    border: solid 2px orange;
+}
+
+.border-red {
+    border: solid 2px red;
+}
+
+.tab-nav {
+    display: flex;
+    background-color: #f1f1f1;
+    width: fit-content;
+}
+
+.tab-link {
+    /* Reset default button style */
+    border: none;
+
+    /* Apply tab link style */
+    cursor: pointer;
+    padding: 0.75rem 1rem;
+}
+
+.tab-link:hover {
+    background-color: lightgrey;
+}
+
+.tab-link.active {
+    background-color: lightskyblue;
+}
+
+.tab-content:not(.active) {
+    display: none;
+}
+

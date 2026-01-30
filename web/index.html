@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="value_watcher.js"></script>
+    <script defer src="tab-management.js"></script>
+</head>
+<body>
+    <div role="tablist" aria-label="Liste d'onglets" class="tab-nav">
+        <button role="tab" aria-selected="false" aria-controls="panel-1" tabindex="0" onclick="handleTabClick(1)" class="tab-link">Aperçu des valeurs actuelles</button>
+        <button role="tab" aria-selected="false" aria-controls="panel-2" tabindex="0" onclick="handleTabClick(2)" class="tab-link">Historique des valeurs</button>
+    </div>
+    <div class="tab-group">
+        <section role="tabpanel" id="panel-1" class="tab-content">
+            <h1>Aperçu des valeurs actuelles</h1>
+            <h3>La valeur actuelle du capteur se situe juste en dessous</h3>
+            <p>Voilà ma potite valeur : <span id="jsValue" aria-live="polite"></span></p>
+        </section>
+        <section role="tabpanel" id="panel-2" class="tab-content">
+            <h1>Historique des valeurs</h1>
+            <h3>Ci-dessous se trouve un affichage de l'historique des valeurs</h3>
+            <ul aria-live="polite" class="history-list"></ul>
+        </section>
+    </div>
+</body>
+</html>

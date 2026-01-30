@@ -1,6 +1,7 @@
 const INTERVAL_TIME = 10000;
 
 const A_randomNumbers = Array.from({ length: 20 }, () => Math.floor(Math.random() * 51) - 10);
+const A_history = [];
 
 const buildMessageNode = (content) => {
     if (typeof content !== 'string') throw new Error('Only a string should be passed to this function');
@@ -21,11 +22,13 @@ function main() {
     const updateInterval = setInterval(() => {
         I_counter++;
         const S_value = A_randomNumbers[I_counter].toString();
-        updateDOM(E_jsValue, S_value);
+        A_history.push(S_value);
+        updatePreviewTab(E_jsValue, S_value);
+        updateHistoryTab();
         if (I_counter >= A_randomNumbers.length - 1) clearInterval(updateInterval);
     }, INTERVAL_TIME);
 
-    const updateDOM = (O_node, S_value) => {
+    const updatePreviewTab = (O_node, S_value) => {
         // Remove all existing message nodes (in case there are any)
         const A_messageNodes = document.querySelectorAll('.message');
         A_messageNodes.forEach((e) => e.remove());
@@ -47,6 +50,17 @@ function main() {
             O_node.classList.add('border-blue');
         }
     };
+
+    const updateHistoryTab = () => {
+        const E_historyList = document.querySelector('.history-list');
+        E_historyList.innerHTML = ''; // Clear existing history
+
+        A_history.forEach((value, index) => {
+            const E_listItem = document.createElement('li');
+            E_listItem.textContent = `Value ${index + 1}: ${value}`;
+            E_historyList.appendChild(E_listItem);
+        });
+    }
 }
 
 main();
